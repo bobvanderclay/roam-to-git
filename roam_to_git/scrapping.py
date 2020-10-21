@@ -149,6 +149,7 @@ async def _download_rr_archive(document: Page,
         await button.click()
         await asyncio.sleep(config.sleep_duration)
         output_type_elem, = await document.querySelectorAll(".bp3-text-overflow-ellipsis")
+        output_type_elem, = [e for e in output_type_elems if await get_text(document, e) == output_type]
         await output_type_elem.click()
 
         # defensive check
